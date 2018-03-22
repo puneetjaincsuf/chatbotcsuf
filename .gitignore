@@ -1,0 +1,7 @@
+venv/
+docs/
+api/__pycache__/
+scraper/__pycache__/
+.idea/
+models/__pycache__
+*.pyc
