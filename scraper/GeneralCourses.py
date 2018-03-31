@@ -4,7 +4,7 @@ from lxml import html
 import scraper.ScraperConstants as const
 import re
 
-def getGeneralCourses():
+def get_general_courses():
     """ Scrape general courses from CSUF catalog.
 
     :return: dictionary:
@@ -13,7 +13,7 @@ def getGeneralCourses():
     """
     general_courses_dict = {}
     try:
-        colleges = College.getColleges();
+        colleges = College.get_colleges();
         for url, college in colleges.items():
             page = requests.get(const.BASE_URL + url)
             tree = html.fromstring(page.content)
