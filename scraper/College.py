@@ -2,7 +2,8 @@ import requests
 from lxml import html
 import scraper.ScraperConstants as const
 
-def getColleges():
+
+def get_colleges():
     """ Scrape colleges from CSUF catalog.
 
     :return: dictionary:
@@ -15,7 +16,7 @@ def getColleges():
         tree = html.fromstring(page.content)
         colleges = tree.xpath(const.COLLEGE_XPATH)
         for i in range(len(colleges)):
-            if (const.COLLEGE in colleges[i].text):
+            if const.COLLEGE in colleges[i].text:
                 college_url = colleges[i].attrib[const.HREF]
                 description = ""
                 college_page = requests.get(const.BASE_URL + const.SLASH + college_url)

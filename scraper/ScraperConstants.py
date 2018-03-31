@@ -1,14 +1,22 @@
 """ General Constants """
 
+PARSER = 'lxml'
+NORMALIZATION_FORM = "NFKD"
+BASE_URL = "http://catalog.fullerton.edu"
+ID = 'id'
+TD = 'td'
+DIV = 'div'
+HREF = 'href'
+ACALOG_NAVIGATION = 'acalog-navigation'
 PREVIEW_URL = "/preview_entity.php";
-SHOW_COURSE = "/ajax/preview_course.php";
+SHOW_COURSE = "/ajax/preview_course.php?";
 CAT_OID = "?catoid=";
 ENT_OID = "&ent_oid=";
 C_OID = "&coid=";
 SHOW_PARAM = "&show"
-BASE_URL = "http://catalog.fullerton.edu"
-HREF = "href"
 SLASH = "/"
+ON_CLICK = "onclick"
+CLASS = "class"
 
 """ College Constants """
 

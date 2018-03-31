@@ -4,10 +4,8 @@ import api.services
 import settings
 
 app = api.app
-
 models.db.init_app(app)
 models.db.app = app
-
 models.ma.init_app(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = settings.SQLALCHEMY_DATABASE_URI
@@ -17,11 +15,11 @@ def reset_database():
     models.db.drop_all()
     models.db.create_all()
 
-def createColleges():
+def create_colleges():
 
     try:
         print('Creating Colleges')
-        colleges = College.getColleges();
+        colleges = College.get_colleges();
         for url, clg in colleges.items():
             college = models.College(name=clg[0], description=clg[1], short_name="", url = url)
             models.db.session.add(college)
@@ -29,11 +27,11 @@ def createColleges():
     except Exception as e:
         print("Error Occured"+ e)
 
-def createDepartments():
+def create_departments():
 
     try:
         print('Creating Departments')
-        departments = Department.getDepartments()
+        departments = Department.get_departments()
         for url, dept in departments.items():
             college = models.db.session.query(models.College).filter(models.College.name == dept[2][0]).one()
             department = models.Department(name=dept[0], short_name="", description=dept[1], department_owner=college, url = url)
@@ -42,11 +40,11 @@ def createDepartments():
     except Exception as e:
         print("Error Occured" + e)
 
-def createPrograms():
+def create_programs():
 
     try:
         print('Creating Programs')
-        programs = Program.getPrograms()
+        programs = Program.get_programs()
         for url, prog in programs.items():
             department = models.db.session.query(models.Department).filter(models.Department.name == prog[1]).one()
             program = models.Program(name=prog[0], short_name="", type=prog[2], program_owner=department, url = url)
@@ -55,11 +53,11 @@ def createPrograms():
     except Exception as e:
         print("Error Occured" + e)
 
-def createGeneralCourses():
+def create_general_courses():
 
     try:
         print('Creating General Courses')
-        general_courses = GeneralCourses.getGeneralCourses()
+        general_courses = GeneralCourses.get_general_courses()
         for url, gc in general_courses.items():
             print('College Name is ',gc[6])
             college = models.db.session.query(models.College).filter(models.College.name == gc[6]).one()
@@ -71,11 +69,11 @@ def createGeneralCourses():
     except Exception as e:
         print("Error Occured" + e)
 
-def createSpecificCourses():
+def create_specific_courses():
 
     try:
         print('Creating Specific Courses')
-        specific_courses = SpecificCourses.getSpecificCourses()
+        specific_courses = SpecificCourses.get_specific_courses()
         for url, sc in specific_courses.items():
             program = models.db.session.query(models.Program).filter(models.Program.name == sc[6]).one()
             specific_course = models.Specific(units=sc[0], short_name=sc[1], name=sc[2], description = sc[3],
@@ -88,8 +86,8 @@ def createSpecificCourses():
 
 
 reset_database()
-createColleges()
-createDepartments()
-createPrograms()
-createGeneralCourses()
-createSpecificCourses()
+create_colleges()
+create_departments()
+create_programs()
+create_general_courses()
+create_specific_courses()
