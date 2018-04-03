@@ -77,10 +77,10 @@ Please refer to firebase documentation [6] on how to deploy firebase functions.
 [2] - https://cloud.google.com/appengine/docs/flexible/python/using-cloud-sql-postgres <br />
 [3] - https://packaging.python.org/guides/installing-using-pip-and-virtualenv/ <br />
 [4] - https://cloud.google.com/appengine/downloads <br />
-[5] - https://dialogflow.com/docs/agents
+[5] - https://dialogflow.com/docs/agents <br />
 [6] - https://firebase.google.com/docs/cli/
 
 
 Developer - Puneet Jain punitjain@csu.fullerton.edu <br /> 
 Advisor - Dr. Michael Shafae <br />
-Reviewer - Dr Anand Panangadan
+Reviewer - Dr. Anand Panangadan
