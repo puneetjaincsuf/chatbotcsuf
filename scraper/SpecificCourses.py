@@ -6,7 +6,9 @@ import re
 from bs4 import BeautifulSoup, NavigableString
 import unicodedata
 
+
 def get_specific_courses():
+
     """ Scrape specific courses from CSUF catalog.
 
     :return: dictionary:
@@ -24,7 +26,7 @@ def get_specific_courses():
 
         for i in range(len(specific_courses)):
             course_preview_action = specific_courses[i].attrib[const.ON_CLICK];
-            coid, catoid = extract_url_info(course_preview_action)
+            coid, catoid = __extract_url_info(course_preview_action)
             course_preview_URL = const.BASE_URL + const.SHOW_COURSE + const.CAT_OID + coid + const.C_OID + catoid + const.SHOW_PARAM;
             course_prereq = []
             type = []
@@ -39,7 +41,7 @@ def get_specific_courses():
 
             mytitle = title_h3.h3
 
-            units, short_name, course_name = build_course_data(mytitle.text)
+            units, short_name, course_name = __build_course_data(mytitle.text)
 
             mylist = list(mytitle.next_elements)
 
@@ -49,42 +51,61 @@ def get_specific_courses():
                 if isinstance(item.string, NavigableString):
                     course_prereq.append(unicodedata.normalize(const.NORMALIZATION_FORM, item.string))
 
-            course_prerequisites = remove_duplicates(course_prereq)
-            type = build_type(course_prerequisites)
+            course_prerequisites = __remove_duplicates(course_prereq)
+            type = __build_type(course_prerequisites)
 
             specific_courses_dict[course_preview_URL] = [units, short_name, course_name, description, type, course_prerequisites, program[0]]
 
     return specific_courses_dict;
 
 
-def build_course_data(course_header):
+def __build_course_data(course_header):
+    """
+    Create data such as units, short name, name for a specific course
+
+    :param course_header:
+    :return: units, short_name, name
+    """
     try:
         header = course_header
         units = header[header.find("(")+1:header.find(")")].strip()
+        course_name = ""
         data = header.split("-", 1)
         short_name = data[0].strip()
-        course_name = data[1].split("(", 1)[0].strip()
+        if(len(data) > 1):
+            course_name = data[1].split("(", 1)[0].strip()
         return units, short_name, course_name
     except Exception as e:
         print("Error Occured" + e)
 
 
-def build_type(prerequisites):
+def __build_type(prerequisites):
+    """
+    Create all type of *requisites
+
+    :param prerequisites:
+    :return: *requisites
+    """
     try:
         types = []
         for type in prerequisites:
             if type in ('Prerequisite', 'Prerequisites', 'Corequisites', 'Corequisite', 'Corerequisite', 'Corerequisites'):
-
                 types.append(type)
         return types
     except Exception as e:
         print("Error Occured" + e)
 
 
-def remove_duplicates(duplicate):
+def __remove_duplicates(original):
+    """
+    Removes duplicate from a list
+
+    :param duplicate:
+    :return: List with no duplicates
+    """
     try:
         final_list = []
-        for num in duplicate:
+        for num in original:
             if num not in final_list and num not in (' ', ', ', '\n', '.'):
                 final_list.append(num.strip('. :'))
         return final_list
@@ -92,7 +113,13 @@ def remove_duplicates(duplicate):
         print("Error Occured" + e)
 
 
-def extract_url_info(url):
+def __extract_url_info(url):
+    """
+    Extract oid's from the URL
+
+    :param url:
+    :return: Oid's
+    """
     try:
         number = re.findall(r'\d+', url)
         return number[0], number[1]

@@ -1,6 +1,7 @@
 from models import db
 from models import ma
 
+
 class Department(db.Model):
 
     """

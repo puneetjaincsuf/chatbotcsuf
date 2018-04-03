@@ -4,6 +4,7 @@ from lxml import html
 import scraper.ScraperConstants as const
 import re
 
+
 def get_general_courses():
     """ Scrape general courses from CSUF catalog.
 
@@ -28,7 +29,7 @@ def get_general_courses():
                 '''get the course information'''
                 preview_page_header = course_preview_tree.xpath(const.COURSE_PREVIEW_XPATH)
                 header_information = preview_page_header[0].text
-                units, short_name, course_name = buildCourseData(header_information)
+                units, short_name, course_name = __build_course_data(header_information)
 
                 '''get the course description'''
                 preview_page_description = course_preview_tree.xpath(const.COURSE_DESCRIPTION_XPATH)
@@ -40,8 +41,8 @@ def get_general_courses():
                 preview_page_prerequisite = course_preview_tree.xpath(const.COURSE_PREREQUISITE_TYPE)
 
                 if "Prerequisites:" in course_description or "Prerequisite:" in course_description:
-                    type, prereq = buildType(course_description)
-                type, prereq = buildType(preview_page_prerequisite[0])
+                    type, prereq = __build_type(course_description)
+                type, prereq = __build_type(preview_page_prerequisite[0])
 
                 if prereq:
                     course_prerequisite.append(prereq)
@@ -61,7 +62,13 @@ def get_general_courses():
     return general_courses_dict;
 
 
-def buildCourseData(course_header):
+def __build_course_data(course_header):
+    """
+    Create data such as units, short name, name for a general course
+
+    :param course_header:
+    :return: units, short name, course name
+    """
     try:
         header = course_header
         units = header[header.find("(")+1:header.find(")")]
@@ -73,7 +80,14 @@ def buildCourseData(course_header):
 
     return units, short_name, course_name
 
-def buildType(preview_page_prerequisite):
+
+def __build_type(preview_page_prerequisite):
+    """
+    Extract type related information
+
+    :param preview_page_prerequisite:
+    :return: type of a general course
+    """
     try:
         prereq = preview_page_prerequisite;
         split_type = re.split('[:]', prereq)

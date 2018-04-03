@@ -4,6 +4,7 @@ import scraper.ScraperConstants as const
 
 
 def get_colleges():
+
     """ Scrape colleges from CSUF catalog.
 
     :return: dictionary:

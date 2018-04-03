@@ -4,8 +4,7 @@ info:
   description: "A simple Google Cloud Endpoints API example."
   title: "Endpoints Example"
   version: "1.0.0"
-host: "sample-project-196107.appspot.com"
-#host: "echo-api.endpoints.YOUR-PROJECT-ID.cloud.goog"
+host: "host-url"
 # [END swagger]
 basePath: "/"
 consumes:
@@ -15,7 +14,7 @@ produces:
 schemes:
 - "https"
 paths:
-  "/getcolleges":
+  "/colleges":
     get:
       description: "Operations related to college."
       operationId: "get_colleges"
@@ -24,18 +23,7 @@ paths:
       responses:
         200:
           description: "College List Received"
-  "/addcollege":
-    post:
-      description: "Operations related to college."
-      operationId: "add_college"
-      produces:
-      - "application/json"
-      responses:
-        200:
-          description: "College has been added"
-          schema:
-            $ref: "#/definitions/college"
-  "/getdepartments":
+  "/departments":
     get:
       description: "Operations related to department."
       operationId: "get_departments"
@@ -44,18 +32,7 @@ paths:
       responses:
         200:
           description: "Deparments List Received"
-  "/adddepartment":
-    post:
-      description: "Operations related to department."
-      operationId: "add_department"
-      produces:
-      - "application/json"
-      responses:
-        200:
-          description: "Department has been added"
-          schema:
-            $ref: "#/definitions/department"
-  "/getprograms":
+  "/programs":
     get:
       description: "Operations related to program."
       operationId: "get_programs"
@@ -64,18 +41,7 @@ paths:
       responses:
         200:
           description: "Programs List Received"
-  "/addprogram":
-    post:
-      description: "Operations related to programs."
-      operationId: "add_program"
-      produces:
-      - "application/json"
-      responses:
-        200:
-          description: "Program has been added"
-          schema:
-            $ref: "#/definitions/program"
-  "/getcourses":
+  "/courses":
     get:
       description: "Operations related to general course."
       operationId: "get_courses"
@@ -84,7 +50,7 @@ paths:
       responses:
         200:
           description: "Courses List Received"
-  "/getgeneralcourses":
+  "/generalcourses":
     get:
       description: "Operations related to general course."
       operationId: "get_general_courses"
@@ -93,18 +59,7 @@ paths:
       responses:
         200:
           description: "General courses List Received"
-  "/addgeneralcourse":
-    post:
-      description: "Operations related to general course."
-      operationId: "add_general_course"
-      produces:
-      - "application/json"
-      responses:
-        200:
-          description: "General course has been added"
-          schema:
-            $ref: "#/definitions/course"
-  "/getspecificcourses":
+  "/specificcourses":
     get:
       description: "Operations related to general course."
       operationId: "get_specific_courses"

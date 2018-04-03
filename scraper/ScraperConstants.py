@@ -55,7 +55,7 @@ INTERN_TYPE = "Intern"
 COURSE_PREVIEW_XPATH = "//h1[@id='course_preview_title']"
 COURSE_DESCRIPTION_XPATH = "//h1[@id='course_preview_title']/following-sibling::text()[1]"
 COURSE_PREREQUISITE_TYPE = "//h1[@id='course_preview_title']/following-sibling::text()[2]"
-COURSE_PREREQUISITE = "//h1[@id='course_preview_title']/following-sibling::a" #"//h1[@id='course_preview_title']/following-sibling::a"
+COURSE_PREREQUISITE = "//h1[@id='course_preview_title']/following-sibling::a"
 COURSE_PREREQUISITE_DESC = "//h1[@id='course_preview_title']/following-sibling::text()[2]"
 
 TEMP = "//h1[@id='course_preview_title']/following-sibling::text()[2]/following-sibling::*"

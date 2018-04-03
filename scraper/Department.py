@@ -5,6 +5,7 @@ import scraper.ScraperConstants as const
 
 
 def get_departments():
+
     """ Scrape departments from CSUF catalog.
 
     :return: dictionary:
@@ -28,7 +29,7 @@ def get_departments():
                 if (len(desc) > 0):
                     description = desc[0].text
                     description = description[0:description.find('.')]
-                department_dict[department_url] = [ swapDepartmentName(departments[i].text),
+                department_dict[department_url] = [ __swap_department_name(departments[i].text),
                                                     description , name ];
     except Exception as e:
         print("Error Occured" + e)
@@ -36,9 +37,12 @@ def get_departments():
     return department_dict;
 
 
-def swapDepartmentName(name):
-    # Department names are in form of name followed by department of
-    # They needs to be converted to department of followed by name
+def __swap_department_name(name):
+
+    """
+    Department names are in form of name followed by department of
+    They needs to be converted to department of followed by name
+    """
     names = name.strip().split(",")
     if len(names) <= 1:
         return name
