@@ -2,8 +2,9 @@ from models import db
 import models
 
 """
-This file is currently not in use. This should be use when 
+This file is currently not in use.
 """
+
 
 def create_college(data):
     name = data.get('name')
@@ -11,6 +12,7 @@ def create_college(data):
     college = models.College(name=name, short_name=short_name)
     db.session.add(college)
     db.session.commit()
+
 
 def create_department(data):
     name = data.get('name')
@@ -20,6 +22,7 @@ def create_department(data):
     department = models.Department(name=name, short_name=short_name, department_owner=college)
     db.session.add(department)
     db.session.commit()
+
 
 def create_program(data):
     name = data.get('name')

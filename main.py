@@ -14,7 +14,6 @@ models.db.init_app(app)
 models.db.app = app
 
 models.ma.init_app(app)
-#models.ma.app = app;
 
 app.config['SQLALCHEMY_DATABASE_URI'] = settings.SQLALCHEMY_DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
@@ -60,19 +59,8 @@ def auth_info_firebase():
     return auth_info()
 
 
-
-'''
-def initialize_app(flask_app):
-    configure_app(flask_app)
-    db.init_app(flask_app)
-'''
-
 def main():
-    #initialize_app(app)
-    #db.init_app(app);
-    app.run(host='127.0.0.1', port=8080, debug=True)
-    #log.info('>>>>> Starting development server at http://{}/api/ <<<<<'.format(app.config['SERVER_NAME']))
-    #app.run(debug=settings.FLASK_DEBUG)
+    app.run(host=settings.FLASK_SERVER_HOST, port=settings.FLASK_SERVER_PORT, debug=settings.FLASK_DEBUG)
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,8 @@
 from models import db
 
+
 class College(db.Model):
+
     """
     Model class for College entity
     Relationship: One to many relationship with Department.
@@ -14,16 +16,3 @@ class College(db.Model):
     department = db.relationship('Department', backref='department_owner', lazy='dynamic')
 
     general_course = db.relationship('General', backref='general_course_owner', lazy='dynamic')
-
-
-
-    '''
-    def serialize(self):
-        return {
-            "name": self.name,
-            "short_name": self.short_name,
-            "id": self.id,
-            "department_owner": self.department
-        }
-    
-    '''

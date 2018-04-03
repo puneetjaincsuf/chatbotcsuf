@@ -1,6 +1,7 @@
 from models import db
 from models import ma
 
+
 class Program(db.Model):
     """
        Model class for Program entity.

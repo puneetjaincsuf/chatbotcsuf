@@ -2,13 +2,12 @@ from models import db
 from models import ma
 from models.Course import Course
 
+
 class General(Course, db.Model):
     """
        Model class for General Course entity
        Relationship: One to many relationship with Department.
     """
-
-    #[units, short_name, course_name, course_description, type, course_prerequisite, college_name];
 
     __mapper_args__ = {'polymorphic_identity': 'general'}
 
@@ -22,7 +21,7 @@ class General(Course, db.Model):
     prerequisite = db.Column(db.String(1000))
     url = db.Column(db.String(1000))
 
-    departmentid = db.Column(db.Integer, db.ForeignKey('college.id'))
+    department_id = db.Column(db.Integer, db.ForeignKey('college.id'))
 
     course = db.relationship('College', backref=db.backref('colleges', lazy='dynamic'))
 

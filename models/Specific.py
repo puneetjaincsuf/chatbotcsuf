@@ -1,6 +1,7 @@
 from models.Course import Course
 from models import db
 
+
 class Specific(Course):
     """
         Model class for Specific Course entity

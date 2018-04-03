@@ -1,6 +1,7 @@
 from models import db
 from models import ma
 
+
 class Programspecificcourse(db.Model):
     """
     This model is a association between programs and specific courses.

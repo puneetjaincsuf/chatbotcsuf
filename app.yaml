@@ -7,10 +7,9 @@ runtime_config:
 
 # [START configuration]
 endpoints_api_service:
-  # The following values are to be replaced by information from the output of
   # 'gcloud endpoints services deploy openapi-appengine.yaml' command.
-  name: "sample-project-196107.appspot.com"
-  config_id: "2018-03-20r1"
+  name: "[Project-URL]"
+  config_id: "[Config-id]"
  # [END configuration]
 
 #[START env]
@@ -18,14 +17,14 @@ env_variables:
     # Replace user, password, database, and instance connection name with the values obtained
     # when configuring your Cloud SQL instance.
     SQLALCHEMY_DATABASE_URI: >-
-      postgresql+psycopg2://postgres:punitjain@/csuf?host=/cloudsql/sample-project-196107:us-east1:csufchatbot
+      postgresql+psycopg2://USER:PASSWORD@/DATABASE?host=/cloudsql/INSTANCE_CONNECTION_NAME
 #[END env]
 
 #[START cloudsql_settings]
 # Replace project and instance with the values obtained  when configuring your
 # Cloud SQL instance.
 beta_settings:
-    cloud_sql_instances: sample-project-196107:us-east1:csufchatbot
+    cloud_sql_instances: INSTANCE_CONNECTION_NAME
 #[END cloudsql_settings]
 
 handlers:
