@@ -1,0 +1,128 @@
+[
+  {
+    "id": "7a3f0e25-a769-43ca-9175-5d4d1f26d496",
+    "data": [
+      {
+        "text": "What is the prerequisite for ",
+        "userDefined": false
+      },
+      {
+        "text": "CPSC 120",
+        "alias": "course_prereq",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521594206
+  },
+  {
+    "id": "4435f520-4a31-4c65-9c58-bc91929dda32",
+    "data": [
+      {
+        "text": "What is the prerequisite for ",
+        "userDefined": false
+      },
+      {
+        "text": "Object Oriented Programming",
+        "alias": "course_prereq",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521594206
+  },
+  {
+    "id": "b271d727-5e15-4e37-9de5-9eace4b03246",
+    "data": [
+      {
+        "text": "Can you tell me the prereq for ",
+        "userDefined": false
+      },
+      {
+        "text": "CPSC 131",
+        "alias": "course_prereq",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521594206
+  },
+  {
+    "id": "84c818a6-fae9-457c-8990-1cf75ea5a717",
+    "data": [
+      {
+        "text": "I would like to know what course I will need to take before ",
+        "userDefined": false
+      },
+      {
+        "text": "The Computer Impact",
+        "alias": "course_prereq",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521594206
+  },
+  {
+    "id": "6b478d7c-9f7f-4267-9a8a-69360e958000",
+    "data": [
+      {
+        "text": "Can you tell me the courses I will need to take before ",
+        "userDefined": false
+      },
+      {
+        "text": "PSYC 569",
+        "alias": "course_prereq",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521497425
+  },
+  {
+    "id": "3e0951fa-77d5-4b80-9f4f-4afc48bf698d",
+    "data": [
+      {
+        "text": "What is the prerequisite for ",
+        "userDefined": false
+      },
+      {
+        "text": "ISDS 540",
+        "alias": "course_prereq",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521497425
+  },
+  {
+    "id": "fe56013a-e65d-48d2-8652-0dc9722964ca",
+    "data": [
+      {
+        "text": "Tell me the prerequisite for ",
+        "userDefined": false
+      },
+      {
+        "text": "Introduction to Computer Security",
+        "alias": "course_prereq",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521497425
+  }
+]
