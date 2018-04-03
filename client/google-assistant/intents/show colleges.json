@@ -1,0 +1,29 @@
+{
+  "id": "b1e0bda3-8360-477e-b1f5-d88e39c4dc83",
+  "name": "show colleges",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "input.showcolleges",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1521421302,
+  "fallbackIntent": false,
+  "events": []
+}

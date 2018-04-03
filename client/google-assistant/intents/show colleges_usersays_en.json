@@ -1,0 +1,26 @@
+[
+  {
+    "id": "f6fb1ae4-71ec-4a64-a4f8-d0f436145178",
+    "data": [
+      {
+        "text": "get colleges",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521415561
+  },
+  {
+    "id": "bec5e73f-04c8-4ef8-ab2b-fe9ecf8fc900",
+    "data": [
+      {
+        "text": "show colleges",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521415561
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "id": "d901c19d-8d8f-42e7-ade6-c32a484a5048",
+  "name": "course prerequisite",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "input.prerequisite",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "80c5a953-8acd-4590-ba9d-d92000d63f83",
+          "required": false,
+          "dataType": "@sys.any",
+          "name": "course_prereq",
+          "value": "$course_prereq",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1521594206,
+  "fallbackIntent": false,
+  "events": []
+}

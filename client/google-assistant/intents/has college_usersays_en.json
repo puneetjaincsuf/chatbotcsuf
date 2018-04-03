@@ -1,0 +1,78 @@
+[
+  {
+    "id": "08a2cf74-6718-4c14-baaa-4388b1032ecf",
+    "data": [
+      {
+        "text": "does CSUF has any ",
+        "userDefined": false
+      },
+      {
+        "text": "business",
+        "alias": "college_name",
+        "meta": "@sys.any",
+        "userDefined": true
+      },
+      {
+        "text": " degree",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521674602
+  },
+  {
+    "id": "d48508af-45a7-442d-8603-3a19c07f5d0d",
+    "data": [
+      {
+        "text": "California State University Fullerton has department of College of ",
+        "userDefined": false
+      },
+      {
+        "text": "Communications",
+        "alias": "college_name",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521674602
+  },
+  {
+    "id": "917e22f4-d51d-43eb-b36b-3d90dbc852c2",
+    "data": [
+      {
+        "text": "Does CSUF teaches ",
+        "userDefined": false
+      },
+      {
+        "text": "Engineering and Computer Science",
+        "alias": "college_name",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521674602
+  },
+  {
+    "id": "c929b80b-225e-4bc1-9ceb-c73b06654ac2",
+    "data": [
+      {
+        "text": "Does California State University Fullerton has ",
+        "userDefined": false
+      },
+      {
+        "text": "College of the Arts",
+        "alias": "college_name",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1521674602
+  }
+]

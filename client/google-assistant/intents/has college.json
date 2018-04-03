@@ -1,0 +1,44 @@
+{
+  "id": "1f45f6bc-6ebe-4201-bef1-9a12d79213bc",
+  "name": "has college",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "input.hascollege",
+      "affectedContexts": [
+        {
+          "name": "hascollege-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [
+        {
+          "id": "2e5b37f5-2027-4dc9-ae76-f9af2f9fbaca",
+          "required": false,
+          "dataType": "@sys.any",
+          "name": "college_name",
+          "value": "$college_name",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1521674602,
+  "fallbackIntent": false,
+  "events": []
+}
