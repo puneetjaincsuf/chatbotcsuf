@@ -12,15 +12,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = settings.SQLALCHEMY_DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 
-def reset_database():
-    """
-    Recreate schema
-    :return:
-    """
-    models.db.drop_all()
-    models.db.create_all()
-
-
 def create_colleges():
     """
     Create colleges and insert them into database
@@ -113,10 +104,14 @@ def create_specific_courses():
     except Exception as e:
         print("Error Occured" + e)
 
+def main( ):
+    models.db.reset_database()
+    create_colleges()
+    create_departments()
+    create_programs()
+    create_general_courses()
+    create_specific_courses()
 
-reset_database()
-create_colleges()
-create_departments()
-create_programs()
-create_general_courses()
-create_specific_courses()
+if __name__ == '__main__':
+    main( )
+

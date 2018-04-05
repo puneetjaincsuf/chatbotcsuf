@@ -74,9 +74,8 @@ def get_programs():
         print("Unexpected error:")
         raise
 
-
 @app.route('/courses', methods=['GET'])
-def get_courses():
+def get_courses(course_name):
 
     """
     Query the course table in database
@@ -85,7 +84,7 @@ def get_courses():
     """
     try:
         data = models.Course.query.all()
-        course_schema = models.CourseSchema(many=True   )
+        course_schema = models.CourseSchema(many=True)
         course = course_schema.dump(data).data
         logging.debug(course)
         return jsonify({"courses": course})
@@ -97,9 +96,8 @@ def get_courses():
         print("Unexpected error:")
         raise
 
-
-@app.route('/generalcourses', methods=['GET'])
-def get_general_courses():
+@app.route('/generalcourses/<course_name>', methods = ["GET"])
+def get_general_courses(course_name):
 
     """
     Query the general table in database
@@ -107,7 +105,8 @@ def get_general_courses():
     :return: General courses data
     """
     try:
-        data = models.General.query.all()
+        #data = models.General.query.all()
+        data = models.General.query.filter(models.General.name == course_name).first( )
         general_course_schema = models.GeneralSchema(many=True)
         general_course = general_course_schema.dump(data).data
         logging.debug(general_course)
@@ -120,9 +119,8 @@ def get_general_courses():
         print("Unexpected error:")
         raise
 
-
-@app.route('/specificcourses', methods=['GET'])
-def get_specific_courses():
+@app.route('/specificcourses/<course_name>', methods = ["GET"])
+def get_specific_courses(course_name):
 
     """
     Query the specific table in the database
