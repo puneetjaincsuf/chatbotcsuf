@@ -83,7 +83,6 @@ def create_general_courses():
         print('Creating General Courses')
         general_courses = GeneralCourses.get_general_courses()
         for url, gc in general_courses.items():
-            print('College Name is ',gc[6])
             college = models.db.session.query(models.College).filter(models.College.name == gc[6]).one()
             general_course = models.General(units=gc[0], short_name=gc[1], name=gc[2], description = gc[3],
                                             type = gc[4], prerequisite = gc[5], url = url,

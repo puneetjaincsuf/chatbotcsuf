@@ -10,7 +10,7 @@ HREF = 'href'
 ACALOG_NAVIGATION = 'acalog-navigation'
 PREVIEW_URL = "/preview_entity.php";
 SHOW_COURSE = "/ajax/preview_course.php?";
-CAT_OID = "?catoid=";
+CAT_OID = "catoid=";
 ENT_OID = "&ent_oid=";
 C_OID = "&coid=";
 SHOW_PARAM = "&show"
