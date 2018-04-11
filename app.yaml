@@ -10,7 +10,7 @@ endpoints_api_service:
   # The following values are to be replaced by information from the output of
   # 'gcloud endpoints services deploy openapi-appengine.yaml' command.
   name: "sample-project-196107.appspot.com"
-  config_id: "2018-03-20r1"
+  config_id: "2018-04-11r0"
  # [END configuration]
 
 #[START env]
