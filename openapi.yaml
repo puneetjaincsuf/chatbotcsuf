@@ -14,60 +14,101 @@ produces:
 schemes:
 - "https"
 paths:
-  "/colleges":
+  "/colleges/{name}":
     get:
-      description: "Operations related to college."
+      description: "Returns a single college"
       operationId: "get_colleges"
       produces:
       - "application/json"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: "college name"
+          type: string
       responses:
         200:
-          description: "College List Received"
-  "/departments":
+          description: "A College"
+          #schema:
+          #  $ref: "#/definitions/College"
+        404:
+          description: "College does not exists."
+  "/departments/{name}":
     get:
-      description: "Operations related to department."
+      description: "Returns a single department"
       operationId: "get_departments"
       produces:
       - "application/json"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: "department name"
+          type: string
       responses:
         200:
-          description: "Deparments List Received"
-  "/programs":
-    get:
-      description: "Operations related to program."
+          description: "A Department"
+          #schema:
+          #  $ref: "#/definitions/Department"
+        404:
+          description: "Department does not exists."
+  "/programs/{name}":
+     get:
+      description: "Returns a single program"
       operationId: "get_programs"
       produces:
       - "application/json"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: "program name"
+          type: string
       responses:
         200:
-          description: "Programs List Received"
-  "/courses":
+          description: "A Program"
+          #schema:
+          #  $ref: "#/definitions/Program"
+        404:
+          description: "Program does not exists."
+  "/generalcourses/{name}":
     get:
-      description: "Operations related to general course."
-      operationId: "get_courses"
-      produces:
-      - "application/json"
-      responses:
-        200:
-          description: "Courses List Received"
-  "/generalcourses":
-    get:
-      description: "Operations related to general course."
+      description: "Returns a general course"
       operationId: "get_general_courses"
       produces:
       - "application/json"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: "general course"
+          type: string
       responses:
         200:
-          description: "General courses List Received"
-  "/specificcourses":
-    get:
-      description: "Operations related to general course."
+          description: "A general course"
+          #schema:
+          #  $ref: "#/definitions/Program"
+        404:
+          description: "General Course does not exists."
+  "/specificcourses/{name}":
+   get:
+      description: "Returns a specific course"
       operationId: "get_specific_courses"
       produces:
       - "application/json"
+      parameters:
+        - name: name
+          in: path
+          required: true
+          description: "specific course name"
+          type: string
       responses:
         200:
-          description: "General courses List Received"
+          description: "A specific course"
+          #schema:
+          #  $ref: "#/definitions/Program"
+        404:
+          description: "Specific Course does not exists."
   "/auth/info/googlejwt":
     get:
       description: "Returns the requests' authentication information."
