@@ -41,12 +41,11 @@ In order to deploy, you need to change the endpoint api services configuration i
 
 #### 9. After the successful deployment hit following endpoints, and you should be able to see the college data:
 
-https://[Project URL]/colleges <br />
-https://[Project URL]/departments <br />
-https://[Project URL]/programs <br />
-https://[Project URL]/courses <br />
-https://[Project URL]/specificcolleges <br />
-https://[Project URL]/generalcolleges <br />
+https://[Project URL]/colleges/<college_name> <br />
+https://[Project URL]/departments/<department_name> <br />
+https://[Project URL]/programs/<program_name> <br />
+https://[Project URL]/specificcourses/<course_name> <br />
+https://[Project URL]/generalcourses/<course_name> <br />
 
 
 ## Part 2
