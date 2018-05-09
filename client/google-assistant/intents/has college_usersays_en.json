@@ -1,6 +1,24 @@
 [
   {
-    "id": "08a2cf74-6718-4c14-baaa-4388b1032ecf",
+    "id": "075d6a3a-9201-40dc-af88-5c9afe4c1ad8",
+    "data": [
+      {
+        "text": "California State University Fullerton has department of College of ",
+        "userDefined": false
+      },
+      {
+        "text": "Communications",
+        "alias": "college_name",
+        "meta": "@sys.any",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1522821159
+  },
+  {
+    "id": "3cab416c-3b5f-48fa-bc26-f8141f75dfa6",
     "data": [
       {
         "text": "does CSUF has any ",
@@ -19,28 +37,10 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1521674602
+    "updated": 1522821381
   },
   {
-    "id": "d48508af-45a7-442d-8603-3a19c07f5d0d",
-    "data": [
-      {
-        "text": "California State University Fullerton has department of College of ",
-        "userDefined": false
-      },
-      {
-        "text": "Communications",
-        "alias": "college_name",
-        "meta": "@sys.any",
-        "userDefined": true
-      }
-    ],
-    "isTemplate": false,
-    "count": 0,
-    "updated": 1521674602
-  },
-  {
-    "id": "917e22f4-d51d-43eb-b36b-3d90dbc852c2",
+    "id": "88642b61-79a9-4af9-aa0b-6b389cde2498",
     "data": [
       {
         "text": "Does CSUF teaches ",
@@ -55,10 +55,10 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1521674602
+    "updated": 1522821159
   },
   {
-    "id": "c929b80b-225e-4bc1-9ceb-c73b06654ac2",
+    "id": "91e09ad5-0cf2-4aeb-94b1-08e9808eebb6",
     "data": [
       {
         "text": "Does California State University Fullerton has ",
@@ -73,6 +73,6 @@
     ],
     "isTemplate": false,
     "count": 0,
-    "updated": 1521674602
+    "updated": 1522821159
   }
 ]

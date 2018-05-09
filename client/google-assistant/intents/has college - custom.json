@@ -1,0 +1,39 @@
+{
+  "id": "131e30bc-f58c-4fce-831c-487aa2aaa09f",
+  "parentId": "1f45f6bc-6ebe-4201-bef1-9a12d79213bc",
+  "rootParentId": "1f45f6bc-6ebe-4201-bef1-9a12d79213bc",
+  "name": "has college - custom",
+  "auto": true,
+  "contexts": [
+    "hascollege-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "hascollege.hascollege-more",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "26e59916-4ea3-4f3f-9431-bd9be75829cd",
+          "name": "college_name",
+          "value": "#hascollege-followup.college_name"
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1522823516,
+  "fallbackIntent": false,
+  "events": []
+}
