@@ -7,6 +7,7 @@ const requestAPI = require('request-promise')
 var admin = require("firebase-admin");
 const baseURL = 'https://catalog.fullerton.edu'
 
+
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
@@ -41,7 +42,7 @@ function processV1Request (request, response) {
   }
 
   if ( app.data.courseData === undefined ){
-    app.data.courseData = [];
+    app.data.courseData;
   }
 
   // Create handlers for Dialogflow actions as well as a 'default' handler
@@ -65,6 +66,14 @@ function processV1Request (request, response) {
       console.log('Inside hascollege.hascollege-yes')
       let college = app.getContextArgument('hascollege-followup', 'college_name').value;//.getContextArgument().getArgument('hascollege-followup.college_name')
       console.log('hascollege.hascollege-yes => College Name = '+college)
+      collegeDescription(college, config.collegeEndpoint);
+    },
+
+    'hascollege.hascollege-more': () =>{
+      console.log('Inside hascollege.hascollege-more')
+      //let college = app.getContextArgument('hascollege-followup', 'college_name').value;
+      let college = app.getArgument('college_name')
+      console.log('hascollege.hascollege-more => College Name = '+college)
       collegeDescription(college, config.collegeEndpoint);
     },
 
@@ -143,7 +152,7 @@ function processV1Request (request, response) {
       text = 'No colleges available at this time';
     }
 
-    if (cname === null && cname === undefined){
+    if (cname === null || cname === undefined){
       text = 'I am not sure how to help with that';
       responseToUser = 'I am not sure how to help with that';
     }
@@ -155,19 +164,14 @@ function processV1Request (request, response) {
         let paramCollegeName = cname.toString().toLowerCase()
         let collegeName = college['name'].toString().toLowerCase()
         console.log('Param College Name: '+paramCollegeName+ '\nCollege Name: '+collegeName)
-        if(collegeName === paramCollegeName){
-          text = '<speak> Yes! CSUF has '+collegeName+ '. <break time="1s"/> Would you like to know more? </speak>';
-          responseToUser = '<speak> Yes! CSUF has '+collegeName+ '. <break time="1s"/> Would you like to know more? </speak>';
-          break;
-        }
-        else if (collegeName.includes(paramCollegeName)){
-          text = '<speak> Yes! CSUF has '+collegeName+ '. <break time="1s"/> Would you like to know more? </speak>';
-          responseToUser = '<speak> Yes! CSUF has '+collegeName+ '. <break time="1s"/> Would you like to know more? </speak>';
+        if (collegeName.includes(paramCollegeName)){
+          text = 'Yes';
+          responseToUser = 'Yes'
           break;
         }
         else{
-          responseToUser = 'CSUF does not teach ' +paramCollegeName+' currently';
-          text = 'CSUF does not teach ' +paramCollegeName+' currently';
+          responseToUser = 'No';
+          text = 'No';
         }
       }
     }
@@ -259,72 +263,44 @@ function processV1Request (request, response) {
 
 
   function showPrerequisite(courseName, endpoint){
-    if (app.data.courseData.length === 0){
-      getCourseData(endpoint).then(() => checkCoursePrerequisite(courseName))
+      getCourseData(endpoint, courseName).then(() => checkCoursePrerequisite(courseName))
         .catch(function (err){
           console.log('showPrerequisite:: No course data '+err)
         });
-    }
-    else{
-      checkCoursePrerequisite(courseName);
-    }
   }
 
-  function checkCoursePrerequisite(courseParam){
-
-    // TODO - CPSC 120 Prereq is not correct and needs to be fixed
-
+  function checkCoursePrerequisite(paramCourseName){
     let responseToUser, text;
-    console.log('Inside Course Prerequisite')
-    console.log('Courses are:: '+app.data.courseData)
-    console.log('Specific Courses are:: '+app.data.courseData['specific courses'])
-    let courseLength = app.data.courseData['specific courses'].length;
-    console.log('checkCoursePrerequisite => Length is -> '+ courseLength);
-    let courses = app.data.courseData['specific courses']
-    if ( courseLength === 0 ){
-      //responseToUser = 'No courses available at this time';
-      text = 'No courses available at this time';
-    }
-    else{
-      for ( let i = 0; i < courseLength; i++)
-      {
-        let course = courses[i]
-        console.log("checkCoursePrerequisite:: Course is :: "+course.toString())
-        let paramCourseName = courseParam.trim().toString().toLowerCase()
-        let courseName = course['name'].trim().toString().toLowerCase()
-        let courseNumber = course['short_name'].trim().toString().toLowerCase()
-
-        console.log('Param course Name: '+paramCourseName+ '\nCourse Name: '+courseName)
-        if(courseName === paramCourseName || courseNumber === paramCourseName){
-
-          let type = course['type']
-          let prerequisite = course['prerequisite'];
-          console.log("Prerequisite is:: "+prerequisite)
-          console.log("Prerequisite 1 is:: "+course.prerequisite)
-          if(prerequisite.length > 0){
+    let course = app.data.courseData['specific_courses']
+    let courseName = course[0]['name']
+    let courseNumber = course[0]['short_name']
+    if(courseName.toLowerCase() === paramCourseName.toLowerCase() || courseNumber.toLowerCase() === paramCourseName.toLowerCase()){
+        let type = course[0]['type']
+        let prerequisite = course[0]['prerequisite'];
+        console.log("Prerequisite is:: "+prerequisite)
+        if(prerequisite !== 'undefined'){
             text = 'The ' +type+ ' for ' + paramCourseName + ' is ' + prerequisite;
-          }
-          else {
+        }
+        else {
             text = 'There is no prerequisite for '+paramCourseName;
-          }
-          let googleRichResponse = app.buildRichResponse()
-            .addSimpleResponse(text)
-            .addBasicCard(app.buildBasicCard(course['description'])
-              .setTitle(courseName)
-              .addButton('Read More', course['url'])
-            );
-          responseToUser = {
-            googleRichResponse: googleRichResponse,
-            speech: text,
-            displayText: text
-          }
+        }
+        let googleRichResponse = app.buildRichResponse()
+          .addSimpleResponse(text)
+          .addBasicCard(app.buildBasicCard(course[0]['description'])
+          .setTitle(courseName)
+          .addButton('Read More', course[0]['url'])
+        );
+        responseToUser = {
+          googleRichResponse: googleRichResponse,
+          speech: text,
+          displayText: text
+        }
 
-          break;
         }
         else if (courseName.includes(paramCourseName) || courseNumber.includes(paramCourseName)){
 
-          let type = course['type']
-          let prerequisite = course['prerequisite'];
+          let type = course[0]['type']
+          let prerequisite = course[0]['prerequisite'];
 
           if(prerequisite.length > 0){
             text = 'The ' +type+' for ' + paramCourseName + ' is ' + prerequisite;
@@ -344,15 +320,11 @@ function processV1Request (request, response) {
             speech: text,
             displayText: text
           }
-
-          break;
         }
         else{
-          responseToUser = 'Sorry I am unable to find prerequsite for ' +paramCourseName;
-          text = 'Sorry I am unable to find prerequsite for ' +paramCourseName;
+          responseToUser = 'Sorry I am unable to find prerequisite for ' +paramCourseName;
+          text = 'Sorry I am unable to find prerequisite for ' +paramCourseName;
         }
-      }
-    }
     if (requestSource === googleAssistantRequest) {
       sendGoogleResponse(responseToUser);
     } else {
@@ -408,13 +380,14 @@ function processV1Request (request, response) {
 
 
   // Call the service to get data
-  function getCourseData(endpoint){
-    return requestAPI(config.serviceURL + endpoint)
+  function getCourseData(endpoint, courseName){
+    console.log("REST URL is: "+config.serviceURL + endpoint + courseName)
+    return requestAPI(config.serviceURL + endpoint + courseName)
       .then(function (data) {
         let courses = JSON.parse(data)
-        if (courses.hasOwnProperty('specific courses')){
-          saveCourseData(courses)
-        }
+        //if (courses != ''){
+        saveCourseData(courses)
+        //}
         return null;
       })
       .catch(function (err) {
